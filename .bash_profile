@@ -15,7 +15,6 @@ export PATH
 export EDITOR='subl -w'
 
 # Aliases
-alias ql='qlmanage -p 2>/dev/null'
 ## Git
 alias gs='git status -sb'
 alias ga='git add . && git add -u'
