@@ -22,6 +22,7 @@ set cursorcolumn
 "" Vundle
 set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
+Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
 Bundle 'bronson/vim-trailing-whitespace'
@@ -43,7 +44,6 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
-Bundle 'Xuyuanp/nerdtree-git-plugin'
 call vundle#end()
 filetype plugin indent on
 
