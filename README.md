@@ -12,5 +12,12 @@ $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 $ brew install reattach-to-user-namespace
 ```
 
+# Adding config files
+```bash
+ln -s zshrc ~/.zshrc
+ln -s tmux.conf ~/.tmux.conf
+ln -s vimrc ~/.vimrc
+```
+
 [1]: https://github.com/tmux-plugins/tpm
 [2]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
