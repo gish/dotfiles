@@ -90,6 +90,10 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias yui="yarn upgrade-interactive --latest"
+alias yif="yarn install --force"
+alias grhom="git reset --hard origin/master"
+
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
