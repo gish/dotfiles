@@ -93,6 +93,7 @@ fi
 alias yui="yarn upgrade-interactive --latest"
 alias yif="yarn install --force"
 alias grhom="git reset --hard origin/master"
+alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
 
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
