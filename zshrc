@@ -93,6 +93,7 @@ fi
 alias yui="yarn upgrade-interactive --latest"
 alias yif="yarn install --force"
 alias grhom="git reset --hard origin/master"
+alias gcchu="git add CHANGELOG.md && git commit -m 'Update changelog'"
 alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
 
 export NVM_DIR="~/.nvm"
