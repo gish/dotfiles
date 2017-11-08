@@ -92,7 +92,9 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias yui="yarn upgrade-interactive --latest"
 alias yif="yarn install --force"
+alias yc="yarn commit"
 alias grhom="git reset --hard origin/master"
+alias grhum="git reset --hard upstream/master"
 alias gcchu="git add CHANGELOG.md && git commit -m 'Update changelog'"
 alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
 
