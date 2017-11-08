@@ -22,6 +22,7 @@ set cursorcolumn
 "" Vundle
 set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
+Bundle 'JamshedVesuna/vim-markdown-preview'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
@@ -136,3 +137,7 @@ let g:neomake_php_enabled_makers = ['php']
 " Don't use backup or swapfiles
 set nobackup
 set noswapfile
+
+" Markdown preview
+let vim_markdown_preview_hotkey='<C-l>'
+let vim_markdown_preview_browser='Google Chrome'
