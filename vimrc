@@ -41,6 +41,7 @@ Bundle 'mtscout6/vim-cjsx'
 Bundle 'mxw/vim-jsx'
 Bundle 'neomake/neomake'
 Bundle 'pangloss/vim-javascript'
+Bundle 'prettier/vim-prettier'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-endwise'
@@ -141,3 +142,9 @@ set noswapfile
 " Markdown preview
 let vim_markdown_preview_hotkey='<C-l>'
 let vim_markdown_preview_browser='Google Chrome'
+
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
