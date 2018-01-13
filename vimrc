@@ -35,7 +35,6 @@ Bundle 'gmarik/vundle'
 Bundle 'junegunn/fzf'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
-Bundle 'maksimr/vim-jsbeautify'
 Bundle 'mileszs/ack.vim'
 Bundle 'mtscout6/vim-cjsx'
 Bundle 'mxw/vim-jsx'
@@ -86,9 +85,6 @@ set hlsearch    " highlight matches
 set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
-
-"" JsBeautify
-map <c-f> :call JsBeautify()<cr>
 
 "" Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
