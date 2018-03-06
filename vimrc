@@ -127,7 +127,7 @@ nnoremap <silent> <Esc><Esc> :let @/=""<CR>
 
 " Neomake configuration
 autocmd! BufWritePost,BufEnter * Neomake
-let g:neomake_javascript_eslint_exe = './node_modules/.bin/eslint'
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_php_enabled_makers = ['php']
 
