@@ -35,6 +35,7 @@ Bundle 'gmarik/vundle'
 Bundle 'junegunn/fzf'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
+Bundle 'leafgarland/typescript-vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'mtscout6/vim-cjsx'
 Bundle 'mxw/vim-jsx'
@@ -127,8 +128,10 @@ nnoremap <silent> <Esc><Esc> :let @/=""<CR>
 
 " Neomake configuration
 autocmd! BufWritePost,BufEnter * Neomake
-let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+let g:neomake_typescript_enabled_makers = ['tslint']
+let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/.bin/tslint'
 let g:neomake_php_enabled_makers = ['php']
 
 " Don't use backup or swapfiles
@@ -143,4 +146,4 @@ let vim_markdown_preview_browser='Google Chrome'
 let g:prettier#quickfix_enabled = 0
 
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.ts PrettierAsync
