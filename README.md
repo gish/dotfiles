@@ -14,9 +14,9 @@ $ brew install reattach-to-user-namespace
 
 # Adding config files
 ```bash
-ln -s zshrc ~/.zshrc
-ln -s tmux.conf ~/.tmux.conf
-ln -s vimrc ~/.vimrc
+ln -s ${PWD}/zshrc ~/.zshrc
+ln -s ${PWD}/tmux.conf ~/.tmux.conf
+ln -s ${PWD}/vimrc ~/.vimrc
 ```
 
 [1]: https://github.com/tmux-plugins/tpm
