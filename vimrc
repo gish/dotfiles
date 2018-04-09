@@ -95,8 +95,8 @@ set autoread
 
 "" Theming
 let g:dracula_italic = 0
+let g:dracula_colorterm = 0
 colorscheme dracula
-highlight Normal ctermbg=None
 
 "" Delete trailing white space
 fun! <SID>StripTrailingWhitespaces()
