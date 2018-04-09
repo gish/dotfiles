@@ -94,8 +94,9 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 set autoread
 
 "" Theming
-set background=dark
+let g:dracula_italic = 0
 colorscheme dracula
+highlight Normal ctermbg=None
 
 "" Delete trailing white space
 fun! <SID>StripTrailingWhitespaces()
