@@ -143,6 +143,7 @@ set noswapfile
 " Markdown preview
 let vim_markdown_preview_hotkey='<C-l>'
 let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_perl=1
 
 " when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
