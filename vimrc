@@ -22,6 +22,7 @@ set cursorcolumn
 "" Vundle
 set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
+Bundle 'mhartington/nvim-typescript'
 Bundle 'JamshedVesuna/vim-markdown-preview'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'altercation/vim-colors-solarized'
@@ -148,3 +149,6 @@ let g:prettier#quickfix_enabled = 0
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.ts PrettierAsync
+
+" Typescript bindings
+nnoremap <leader>t :TSType<CR>
