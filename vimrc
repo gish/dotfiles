@@ -148,8 +148,9 @@ let vim_markdown_preview_perl=1
 " when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
 
+let g:prettier#exec_cmd_path = $PWD .'/node_modules/.bin/prettier'
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.ts PrettierAsync
+autocmd BufWritePre *.md,*.js,*.jsx,*.ts,*.tsx PrettierAsync
 
 " Typescript bindings
 nnoremap <leader>t :TSType<CR>
