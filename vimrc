@@ -22,10 +22,10 @@ set cursorcolumn
 "" Vundle
 set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
-Bundle 'mhartington/nvim-typescript'
 Bundle 'JamshedVesuna/vim-markdown-preview'
+Bundle 'Shougo/denite.nvim'
+Bundle 'Shougo/deoplete.nvim'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'dracula/vim'
@@ -37,6 +37,7 @@ Bundle 'junegunn/fzf'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'mhartington/nvim-typescript'
 Bundle 'mileszs/ack.vim'
 Bundle 'mtscout6/vim-cjsx'
 Bundle 'mxw/vim-jsx'
@@ -78,6 +79,7 @@ if isdirectory(argv(0))
     autocmd vimenter * exe "cd" argv(0)
     autocmd VimEnter * NERDTree
 endif
+let NERDTreeShowHidden=1
 
 "" NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
@@ -98,6 +100,7 @@ set autoread
 let g:dracula_italic = 0
 let g:dracula_colorterm = 0
 colorscheme dracula
+set background=dark
 
 "" Delete trailing white space
 fun! <SID>StripTrailingWhitespaces()
@@ -154,3 +157,5 @@ autocmd BufWritePre *.md,*.js,*.jsx,*.ts,*.tsx PrettierAsync
 
 " Typescript bindings
 nnoremap <leader>t :TSType<CR>
+let g:deoplete#enable_at_startup = 1
+
