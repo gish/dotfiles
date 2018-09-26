@@ -94,12 +94,11 @@ alias yui="yarn upgrade-interactive --latest"
 alias yif="yarn install --force"
 alias yc="yarn commit"
 alias grhom="git reset --hard origin/master"
-alias grhum="git reset --hard upstream/master"
-alias gcchu="git add CHANGELOG.md && git commit -m 'Update changelog'"
+alias gfpb="git rev-parse --abbrev-ref HEAD | xargs git push --force origin"
 alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
 
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
 
 export TERM="xterm-256color"
 
