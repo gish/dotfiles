@@ -97,9 +97,6 @@ alias grhom="git reset --hard origin/master"
 alias gfpb="git rev-parse --abbrev-ref HEAD | xargs git push --force origin"
 alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
 
-export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
-
 export TERM="xterm-256color"
 
 export PATH="$HOME/.yarn/bin:$PATH"
