@@ -4,7 +4,8 @@ brew install\
   tmux\
   git\
   neovim\
-  diff-so-fancy
+  diff-so-fancy\
+  reattach-to-user-namespace
 
 # tmux
 ## TPM
