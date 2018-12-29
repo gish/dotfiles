@@ -5,7 +5,8 @@ brew install\
   git\
   neovim\
   diff-so-fancy\
-  reattach-to-user-namespace
+  reattach-to-user-namespace\
+  nvm
 
 # tmux
 ## TPM
@@ -24,3 +25,6 @@ ln -s "`pwd`/nvim" ~/.vimrc
 
 # zsh
 ln -s "`pwd`/zshrc" ~/.zshrc
+
+# nvm
+mkdir ~/.nvm
