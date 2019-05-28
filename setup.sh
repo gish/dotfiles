@@ -25,6 +25,13 @@ ln -s "`pwd`/nvim" ~/.vimrc
 
 # zsh
 ln -s "`pwd`/zshrc" ~/.zshrc
+## autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+## syntax highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+## color theme
+git clone https://github.com/dracula/zsh.git /tmp/dracula &&\
+  mv /tmp/dracula/dracula.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes
 
 # nvm
 mkdir ~/.nvm
