@@ -25,7 +25,10 @@ git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 ## Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 nvim +PluginInstall +qall
-ln -s "`pwd`/nvim" ~/.vimrc
+mkdir -p ~/.config/nvim/
+ln -s "`pwd`/nvim" ~/.config/nvim/.init.vim
+## python 3 provider
+python3 -m pip install --user --upgrade pynvim
 
 # zsh
 ln -s "`pwd`/zshrc" ~/.zshrc
