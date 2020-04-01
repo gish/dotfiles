@@ -74,6 +74,7 @@ alias yc="yarn commit"
 alias grhom="git reset --hard origin/master"
 alias gfpb="git rev-parse --abbrev-ref HEAD | xargs git push --force origin"
 alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
+alias gack="git ls-files --others --cached --exclude-standard | ack -x"
 
 export TERM="xterm-256color"
 
