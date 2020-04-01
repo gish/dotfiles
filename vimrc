@@ -52,9 +52,9 @@ call vundle#end()
 filetype plugin indent on
 
 "" Tabbing
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 "" Fugitive
@@ -122,11 +122,11 @@ vnoremap > >gv
 "" Directories
 set undodir=~/.vim/undo/
 
-autocmd FileType coffee :setlocal sw=2 ts=2 sts=2
-autocmd FileType javascript :setlocal sw=2 ts=2 sts=2
-autocmd FileType ruby :setlocal sw=2 ts=2 sts=2
-autocmd FileType yaml :setlocal sw=2 ts=2 sts=2
-autocmd FileType scss :setlocal sw=2 ts=2 sts=2
+autocmd FileType coffee :setlocal sw=4 ts=4 sts=4
+autocmd FileType javascript :setlocal sw=4 ts=4 sts=4
+autocmd FileType ruby :setlocal sw=4 ts=4 sts=4
+autocmd FileType yaml :setlocal sw=4 ts=4 sts=4
+autocmd FileType scss :setlocal sw=4 ts=4 sts=4
 
 " Remove highlighting with double ESC
 nnoremap <silent> <Esc><Esc> :let @/=""<CR>
