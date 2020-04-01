@@ -26,6 +26,7 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'Shougo/denite.nvim'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Yggdroot/indentLine'
 Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'dracula/vim'
@@ -159,4 +160,9 @@ let g:prettier#autoformat = 0
 " Typescript bindings
 nnoremap <leader>t :TSType<CR>
 let g:deoplete#enable_at_startup = 1
+
+
+" indentline
+let g:indentLine_concealcursor="nc"
+let g:indentLine_setColors=1
 
