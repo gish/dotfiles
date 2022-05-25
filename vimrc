@@ -16,39 +16,43 @@ nmap <c-m> 5<c-w><
 
 "" Cursorline
 set cursorline
-set cursorcolumn
-
 
 "" Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'Shougo/denite.nvim'
-Plugin 'Shougo/deoplete.nvim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'Yggdroot/indentLine'
 Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'dracula/vim'
+Plugin 'dracula/vim', { 'name': 'dracula' }
+Plugin 'morhetz/gruvbox'
 Plugin 'ervandew/supertab'
 Plugin 'freitass/todo.txt-vim'
 Plugin 'geekjuice/vim-mocha'
 Plugin 'gmarik/vundle'
-Plugin 'junegunn/fzf'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'kien/ctrlp.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'mhartington/nvim-typescript'
 Plugin 'mileszs/ack.vim'
 Plugin 'mtscout6/vim-cjsx'
 Plugin 'mxw/vim-jsx'
 Plugin 'neomake/neomake'
 Plugin 'pangloss/vim-javascript'
-Plugin 'prettier/vim-prettier'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
+Plugin 'preservim/nerdtree'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
+Plugin 'frazrepo/vim-rainbow'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'fatih/vim-go',
+
+" Typescript
+    Plugin 'leafgarland/typescript-vim'
+    Plugin 'maxmellon/vim-jsx-pretty'
+
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 call vundle#end()
 filetype plugin indent on
 
@@ -67,9 +71,6 @@ nmap <leader>gl :Glog<CR>
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 " Tab between buffers
 noremap <tab> <c-w><c-w>
-
-"" CtrlP
-map <leader>t :CtrlP<CR>
 
 "" NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
@@ -100,7 +101,7 @@ set autoread
 "" Theming
 let g:dracula_italic = 0
 let g:dracula_colorterm = 0
-colorscheme dracula
+colorscheme gruvbox
 set background=dark
 
 "" Delete trailing white space
@@ -132,14 +133,6 @@ autocmd FileType scss :setlocal sw=4 ts=4 sts=4
 " Remove highlighting with double ESC
 nnoremap <silent> <Esc><Esc> :let @/=""<CR>
 
-" Neomake configuration
-autocmd! BufWritePost,BufEnter * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-let g:neomake_typescript_enabled_makers = ['tslint']
-let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/.bin/tslint'
-let g:neomake_php_enabled_makers = ['php']
-
 " Don't use backup or swapfiles
 set nobackup
 set noswapfile
@@ -153,16 +146,40 @@ let vim_markdown_preview_github=1
 " when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
 
-let g:prettier#exec_cmd_path = $PWD .'/node_modules/.bin/prettier'
 let g:prettier#autoformat = 1
-autocmd BufWritePre *.md,*.js,*.jsx,*.ts,*.tsx PrettierAsync
 
-" Typescript bindings
-nnoremap <leader>t :TSType<CR>
-let g:deoplete#enable_at_startup = 1
-
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+autocmd BufWritePre *.md,*.js,*.jsx,*.ts,*.tsx Prettier
 
 " indentline
 let g:indentLine_concealcursor="nc"
 let g:indentLine_setColors=1
 
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
+" CoC extensions
+let g:coc_global_extensions = ['coc-tsserver']
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rf <Plug>(coc-refactor)
+
+" Go settings
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>f <Plug>(go-test-func)
+au FileType go nmap <silent> gf :GoFillStruct<CR>
+
+
+let g:rainbow_active = 1
+
+" fzf
+let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
+nnoremap <silent> <C-f> :Files<CR>
