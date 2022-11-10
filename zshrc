@@ -63,10 +63,19 @@ export NVM_DIR="$HOME/.nvm"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Git
 alias grhom="git reset --hard origin/master"
 alias gfpb="git rev-parse --abbrev-ref HEAD | xargs git push --force origin"
 alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
 alias gack="git ls-files --others --cached --exclude-standard | ack -x"
+
+# Mob
+alias ms="mob start --create --include-uncommitted-changes"
+alias mn="mob next --return-to-base-branch"
+alias md="mob done"
+export MOB_TIMER="7"
+
 
 export TERM="xterm-256color"
 
