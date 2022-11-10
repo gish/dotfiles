@@ -76,6 +76,12 @@ alias mn="mob next --return-to-base-branch"
 alias md="mob done"
 export MOB_TIMER="7"
 
+# Watson
+alias wr='watson restart'
+alias wsto='watson stop'
+alias wsta='watson status'
+alias wl='watson log'
+
 
 export TERM="xterm-256color"
 
