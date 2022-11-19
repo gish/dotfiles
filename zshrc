@@ -73,4 +73,4 @@ alias wl='watson log'
 
 export TERM="xterm-256color"
 
-export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
