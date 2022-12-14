@@ -26,7 +26,6 @@ COMPLETION_WAITING_DOTS="true"
 # Plugins
 plugins=(git vi-mode zsh-syntax-highlighting zsh-autosuggestions tmux bgnotify)
 
-
 # Tmux
 #export ZSH_TMUX_AUTOSTART=true
 
@@ -49,25 +48,24 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+## Alias
 alias grhom="git reset --hard origin/master"
 alias gfpb="git rev-parse --abbrev-ref HEAD | xargs git push --force origin"
 alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
 alias gack="git ls-files --others --cached --exclude-standard | ack -x"
+alias tf=terraform
+
+# Watson
+alias wr="watson restart"
+alias ws="watson stop"
+alias wl="watson log"
+alias wst="watson status"
 
 export TERM="xterm-256color"
 
-export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH:/usr/local/go/bin:/home/ehedberg/.local/bin"
+
+# pnpm
+export PNPM_HOME="/home/ehedberg/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

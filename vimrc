@@ -47,6 +47,7 @@ Plugin 'frazrepo/vim-rainbow'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'fatih/vim-go',
+Plugin 'hashivim/vim-terraform',
 
 " Typescript
     Plugin 'leafgarland/typescript-vim'
@@ -168,6 +169,13 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>rf <Plug>(coc-refactor)
@@ -183,3 +191,8 @@ let g:rainbow_active = 1
 " fzf
 let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
 nnoremap <silent> <C-f> :Files<CR>
+
+let g:terraform_fmt_on_save=1
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
