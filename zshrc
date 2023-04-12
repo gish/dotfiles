@@ -11,6 +11,7 @@ zplug "zsh-users/zsh-completions",              defer:0
 zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
+zplug "unixorn/fzf-zsh-plugin",                 defer:0
 zplug load
 if ! zplug check --verbose; then
   zplug install
@@ -24,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 
 
 # Plugins
-plugins=(git vi-mode zsh-syntax-highlighting zsh-autosuggestions tmux bgnotify)
+plugins=(git vi-mode zsh-syntax-highlighting zsh-autosuggestions tmux bgnotify fzf-zsh-plugin)
 
 # Tmux
 #export ZSH_TMUX_AUTOSTART=true
@@ -61,6 +62,9 @@ alias ws="watson stop"
 alias wl="watson log"
 alias wst="watson status"
 
+# Vim
+alias v="nvim"
+
 export TERM="xterm-256color"
 
 export PATH="$HOME/.yarn/bin:$PATH:/usr/local/go/bin:/home/ehedberg/.local/bin"
@@ -69,3 +73,8 @@ export PATH="$HOME/.yarn/bin:$PATH:/usr/local/go/bin:/home/ehedberg/.local/bin"
 export PNPM_HOME="/home/ehedberg/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# FZF
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs --ignore=~/.ignore'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

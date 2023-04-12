@@ -24,19 +24,16 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'Shougo/denite.nvim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Yggdroot/indentLine'
 Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'dracula/vim', { 'name': 'dracula' }
 Plugin 'morhetz/gruvbox'
 Plugin 'ervandew/supertab'
-Plugin 'freitass/todo.txt-vim'
 Plugin 'geekjuice/vim-mocha'
 Plugin 'gmarik/vundle'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'mileszs/ack.vim'
-Plugin 'mtscout6/vim-cjsx'
-Plugin 'mxw/vim-jsx'
+"Plugin 'mtscout6/vim-cjsx'
+"Plugin 'mxw/vim-jsx'
 Plugin 'neomake/neomake'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdcommenter'
@@ -71,7 +68,7 @@ nmap <leader>gl :Glog<CR>
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 " Tab between buffers
-noremap <tab> <c-w><c-w>
+"noremap <tab> <c-w><c-w>
 
 "" NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
