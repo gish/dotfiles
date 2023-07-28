@@ -57,6 +57,7 @@ alias grhom="git reset --hard origin/master"
 alias gfpb="git rev-parse --abbrev-ref HEAD | xargs git push --force origin"
 alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
 alias gack="git ls-files --others --cached --exclude-standard | ack -x"
+alias gcamn="git commit --no-verify -a -m"
 
 # Mob
 alias ms="mob start --create --include-uncommitted-changes"
@@ -74,3 +75,10 @@ alias wl='watson log'
 export TERM="xterm-256color"
 
 export PATH="/usr/local/go/bin:$PATH"
+
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+
+
+
+alias tf=terraform
+alias v=nvim
