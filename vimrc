@@ -23,7 +23,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'Shougo/denite.nvim'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'dracula/vim', { 'name': 'dracula' }
@@ -36,8 +35,6 @@ Plugin 'mileszs/ack.vim'
 "Plugin 'mxw/vim-jsx'
 Plugin 'neomake/neomake'
 Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'preservim/nerdtree'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'frazrepo/vim-rainbow'
@@ -45,6 +42,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'fatih/vim-go',
 Plugin 'hashivim/vim-terraform',
+Plugin 'jparise/vim-graphql'
 
 " Typescript
     Plugin 'leafgarland/typescript-vim'
@@ -70,19 +68,6 @@ nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 " Tab between buffers
 "noremap <tab> <c-w><c-w>
 
-"" NERDTree
-nmap <leader>n :NERDTreeToggle<CR>
-let NERDTreeHighlightCursorline=1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-if isdirectory(argv(0))
-    bd
-    autocmd vimenter * exe "cd" argv(0)
-    autocmd VimEnter * NERDTree
-endif
-let NERDTreeShowHidden=1
-
-"" NERDCommenter
-map <leader>/ <plug>NERDCommenterToggle<CR>
 
 "" Searching
 set hlsearch    " highlight matches
@@ -147,15 +132,11 @@ let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat = 1
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-autocmd BufWritePre *.md,*.js,*.jsx,*.ts,*.tsx Prettier
+autocmd BufWritePre *.md,*.js,*.jsx,*.ts,*.tsx,*.html Prettier
 
 " indentline
 let g:indentLine_concealcursor="nc"
 let g:indentLine_setColors=1
-
-" Start NERDTree. If a file is specified, move the cursor to its window.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 
 " CoC extensions
 let g:coc_global_extensions = ['coc-tsserver']
@@ -187,9 +168,9 @@ let g:rainbow_active = 1
 
 " fzf
 let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
-nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <C-f> :GFiles<CR>
+nnoremap <silent> <C-g> :Rg<CR>
 
 let g:terraform_fmt_on_save=1
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
