@@ -11,6 +11,9 @@ zplug "zsh-users/zsh-completions",              defer:0
 zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
+zplug "unixorn/fzf-zsh-plugin",                 defer:0
+zplug "bigH/git-fuzzy",                         defer:0, as:command, use:"bin/git-fuzzy"
+
 zplug load
 if ! zplug check --verbose; then
   zplug install
@@ -24,8 +27,7 @@ COMPLETION_WAITING_DOTS="true"
 
 
 # Plugins
-plugins=(git vi-mode zsh-syntax-highlighting zsh-autosuggestions tmux bgnotify)
-
+plugins=(git vi-mode zsh-syntax-highlighting zsh-autosuggestions tmux bgnotify fzf-zsh-plugin)
 
 # Tmux
 #export ZSH_TMUX_AUTOSTART=true
@@ -49,36 +51,64 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+## Alias
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # Git
 alias grhom="git reset --hard origin/master"
+alias grb="git rev-parse --abbrev-ref HEAD | xargs -I {} git reset --hard origin/{}"
 alias gfpb="git rev-parse --abbrev-ref HEAD | xargs git push --force origin"
-alias trwgrn="git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window"
 alias gack="git ls-files --others --cached --exclude-standard | ack -x"
-alias gcamn="git commit --no-verify -a -m"
-
-# Mob
-alias ms="mob start --create --include-uncommitted-changes"
-alias mn="mob next --return-to-base-branch"
-alias md="mob done"
-export MOB_TIMER="7"
+alias gcamn="git commit -a --no-verify -m"
+alias gch='git checkout `git fuzzy branch`'
+alias gwip="git add . && git commit -m "WIP" --no-verify"
+alias tf=terraform
+alias tn='tmux new -s'
 
 # Watson
-alias wr='watson restart'
-alias wsto='watson stop'
-alias wsta='watson status'
-alias wl='watson log'
+alias wr="watson restart"
+alias ws="watson stop"
+alias wl="watson log"
+alias wst="watson status"
+alias wrm="watson report --from {$(date +%Y-%m-01)}"
 
+# AWS
+alias ass="aws sso login --profile"
+
+# Vim
+alias v="nvim"
 
 export TERM="xterm-256color"
 
-export PATH="/usr/local/go/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH:/usr/local/go/bin:/home/ehedberg/.local/bin"
 
-export SSH_AUTH_SOCK=~/.1password/agent.sock
+# pnpm
+export PNPM_HOME="/home/ehedberg/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# FZF
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs --ignore=~/.ignore'
+
+# Krew (kubectl plugin manager)
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export SSH_AUTH_SOK=~/.1password/agent.sock
+
+# Hooks
+precmd () {
+    # Rename window to git repo name
+    git rev-parse --is-inside-work-tree 2> /dev/null > /dev/null
+    if [[ $? -eq 0 ]]; then
+        git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window
+    fi
+}
+
+# Zoxide
+# https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init zsh)"
 
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias tf=terraform
-alias v=nvim
