@@ -3,6 +3,7 @@ set nocompatible      " Use vim, no vi defaults
 set number            " Show line numbers
 set ruler             " Show line and column number
 syntax enable         " Turn on syntax highlighting allowing local overrides
+syntax on
 set encoding=utf-8    " Set default encoding to UTF-8
 filetype off          " required
 set colorcolumn=80
@@ -37,7 +38,7 @@ Plugin 'neomake/neomake'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
-Plugin 'frazrepo/vim-rainbow'
+" Plugin 'frazrepo/vim-rainbow'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'fatih/vim-go',
@@ -170,7 +171,7 @@ let g:rainbow_active = 1
 let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
 nnoremap <silent> <C-f> :GFiles<CR>
 nnoremap <silent> <C-g> :Rg<CR>
-
+nnoremap <silent> <Leader>/ :BLines<CR>
 let g:terraform_fmt_on_save=1
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"

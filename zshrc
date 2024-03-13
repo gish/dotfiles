@@ -52,6 +52,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ## Alias
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Git
 alias grhom="git reset --hard origin/master"
 alias grb="git rev-parse --abbrev-ref HEAD | xargs -I {} git reset --hard origin/{}"
 alias gfpb="git rev-parse --abbrev-ref HEAD | xargs git push --force origin"
@@ -90,7 +94,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs --ignor
 # Krew (kubectl plugin manager)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-export TV4_WAF_BYPASS='testsuite-UFZEaXVSZWFJZV91ZXlxeTh2dHFTRzJSalQ4Cg=='
+export SSH_AUTH_SOK=~/.1password/agent.sock
 
 # Hooks
 precmd () {
