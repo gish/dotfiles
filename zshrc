@@ -58,13 +58,23 @@ export NVM_DIR="$HOME/.nvm"
 # Git
 alias grhom="git reset --hard origin/master"
 alias grb="git rev-parse --abbrev-ref HEAD | xargs -I {} git reset --hard origin/{}"
+alias grd="git reset --hard origin/develop"
 alias gfpb="git rev-parse --abbrev-ref HEAD | xargs git push --force origin"
 alias gack="git ls-files --others --cached --exclude-standard | ack -x"
 alias gcamn="git commit -a --no-verify -m"
 alias gch='git checkout `git fuzzy branch`'
-alias gwip="git add . && git commit -m "WIP" --no-verify"
 alias tf=terraform
 alias tn='tmux new -s'
+alias kl="keylight"
+
+# Checkout new git branch with kebabcased branch name
+#
+# $ gcob upgrade all libraries
+# Checks out "upgrade-all-libraries"
+function gcob {
+  local slug=$(echo "$@" | sed 's/\s\+/_/g')
+  git checkout -b $slug
+}
 
 # Watson
 alias wr="watson restart"
@@ -79,22 +89,21 @@ alias ass="aws sso login --profile"
 # Vim
 alias v="nvim"
 
+# todo
+alias todo='scratch private'
+
 export TERM="xterm-256color"
 
 export PATH="$HOME/.yarn/bin:$PATH:/usr/local/go/bin:/home/ehedberg/.local/bin"
-
-# pnpm
-export PNPM_HOME="/home/ehedberg/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
 # FZF
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs --ignore=~/.ignore'
 
 # Krew (kubectl plugin manager)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-export SSH_AUTH_SOK=~/.1password/agent.sock
 
 # Hooks
 precmd () {
@@ -103,12 +112,23 @@ precmd () {
     if [[ $? -eq 0 ]]; then
         git rev-parse --show-toplevel | xargs basename | xargs tmux rename-window
     fi
+    # Use correct node version from .nvmrc config
+    if [ -f .nvmrc ]; then
+        nvm use 2> /dev/null > /dev/null
+    fi
 }
 
-# Zoxide
-# https://github.com/ajeetdsouza/zoxide
-eval "$(zoxide init zsh)"
 
+
+source $HOME/.zshenv
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+# pnpm
+export PNPM_HOME="/home/ehedberg/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

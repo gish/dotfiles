@@ -54,9 +54,9 @@ call vundle#end()
 filetype plugin indent on
 
 "" Tabbing
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 "" Fugitive
@@ -159,6 +159,11 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>rf <Plug>(coc-refactor)
 
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent><nowait> [g <Plug>(coc-diagnostic-prev)
+nmap <silent><nowait> ]g <Plug>(coc-diagnostic-next)
+
 " Go settings
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>f <Plug>(go-test-func)
@@ -175,3 +180,5 @@ nnoremap <silent> <Leader>/ :BLines<CR>
 let g:terraform_fmt_on_save=1
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+map <leader>D :put =strftime('%Y-%m-%d %H:%M')<CR>
